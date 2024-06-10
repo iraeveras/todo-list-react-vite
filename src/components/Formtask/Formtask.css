@@ -1,0 +1,61 @@
+.task-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    padding: 10px;
+    background-color: #f1f1f1;
+}
+
+.task-section h3 {
+    width: 100%;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.task-form {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    gap: 6px;
+    width: 60%;
+    background-color: #fff;
+}
+
+.input-text-task, 
+.input-date-task {
+    width: 60%;
+    height: 30px;
+    outline: none;
+    border: 1px solid #a7f3d0;
+    padding: 0 10px;
+}
+
+.input-date-task {
+    width: 20%;
+}
+
+@media (width <= 1195px) {
+    .task-form {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .task-form input {
+        width: 300px;
+        aspect-ratio: 3/1;
+        flex-grow: 1;
+    }
+}
+
+@media (width <= 715px) {
+    .task-form {
+        display: flex;
+        flex-direction: column;
+    }
+    .task-form input, 
+    .task-form .btn-add-task {
+        width: 100%;
+    }
+}
