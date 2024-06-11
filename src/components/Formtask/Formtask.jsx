@@ -1,23 +1,33 @@
+'use client'
 import { useState } from "react";
+import { Button } from "../Button/Button";
 import { FiPlus } from "react-icons/fi";
 import { dateAtual } from "../../variables/constants";
 import './Formtask.css';
 
-export const Formtask = () => {
+export const Formtask = ({ task, dateCompletion, createDatetask }) => {
 
-    const [inputTaxtTask, setinputTaxtTask] = useState('')
+    const [inputTextTask, setInputTextTask] = useState('')
     const [inputDateTask, setInputDateTask] = useState('')
 
-    const handleTaskAdd = (e) => {
-        e.preventDefault();
-        const task = {
-            taskValue: inputTaxtTask, 
-            dateValue: inputDateTask,
-            dateAtual: dateAtual
-        }
+    
+    
+    const handleTaskAdd = () => {
+        // e.PreventDefault()
+        const { task, dateCompletion, createDatetask } = taskValue
+        
+        
+        // const task = {
+        //     taskValue: inputTextTask, 
+        //     dateValue: inputDateTask,
+        //     dateAtual: dateAtual
+        // }
+
         console.log(task)
-        setinputTaxtTask('')
+        // setinputTaxtTask('')
+        
     }
+
     return (
         <>
             <h3 className='title'>Adicionar tarefas</h3>
@@ -28,8 +38,8 @@ export const Formtask = () => {
                     type="text" 
                     placeholder='Digite sua tarefa...' 
                     className='input-text-task' 
-                    onChange={(e) => setinputTaxtTask(e.target.value)}
-                    value={inputTaxtTask}
+                    onChange={(e) => setInputTextTask(e.target.value)}
+                    value={inputTextTask}
                     />
 
                     <input 
@@ -41,9 +51,15 @@ export const Formtask = () => {
                     />
                 </div>
 
-                <button onClick={handleTaskAdd} className='btn-add-task'>
+                <button
+                type="button"
+                className='btn-add-task'
+                onClick={handleTaskAdd}
+                >
                     <FiPlus />
                 </button>
+
+                
             </form>
             
         </>

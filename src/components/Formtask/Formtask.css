@@ -64,8 +64,4 @@
         display: flex;
         flex-direction: column;
     }
-
-    .task-form .btn-add-task {
-        width: 100%;
-    }
 }

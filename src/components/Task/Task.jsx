@@ -1,47 +1,31 @@
 import { FiCheckSquare } from "react-icons/fi";
 import { FiEdit } from "react-icons/fi";
 import { FiXSquare } from "react-icons/fi";
+import { Button } from "../Button/Button";
 import './Task.css';
 
-export const Task = () => {
+export const Task = ({task, dateCompletion, createDatetask}) => {
+    
     return (
         <ul className='task-list'>
             <li className='list'>
                 <div className='task-group'>
-                    <p className='task'>Enviar FGTS</p>
-                    <p className='task-completion-date'>10/06/2024</p>
+                    <p className='task'>{task}</p>
+                    <p className='task-completion-date'>{dateCompletion}</p>
+                    <p className='task-create-date'>{createDatetask}</p>
                 </div>
                 <div className='btn-group'>
-                    <button>
+                    <Button>
                         <FiCheckSquare/>
-                    </button>
-                    <button>
+                    </Button>
+                    <Button>
                         <FiEdit/>
-                    </button>
-                    <button>
+                    </Button>
+                    <Button>
                         <FiXSquare/>
-                    </button>
+                    </Button>
                 </div>
-            </li>
-            
-            <li className='list'>
-                <div className='task-group'>
-                    <p className='task'>Enviar FGTS</p>
-                    <p className='task-completion-date'>10/06/2024</p>
-                </div>
-                <div className='btn-group'>
-                    <button>
-                        <FiCheckSquare/>
-                    </button>
-                    <button>
-                        <FiEdit/>
-                    </button>
-                    <button>
-                        <FiXSquare/>
-                    </button>
-                </div>
-            </li>
-            
+            </li>            
         </ul>
     )
 }
