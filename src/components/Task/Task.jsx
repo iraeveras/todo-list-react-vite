@@ -4,17 +4,20 @@ import { FiXSquare } from "react-icons/fi";
 import { Button } from "../Button/Button";
 import './Task.css';
 
-export const Task = ({task, dateCompletion, createDatetask}) => {
+
+
+export const Task = (props) => {
     
     return (
-        <ul className='task-list'>
-            <li className='list'>
+        <div className='task-list'>
+            <div className='list'>
                 <div className='task-group'>
-                    <p className='task'>{task}</p>
-                    <p className='task-completion-date'>{dateCompletion}</p>
-                    <p className='task-create-date'>{createDatetask}</p>
+                    <p className='task'>{props.task}</p>
+                    <p className='task-completion-date'>{props.dateCompletion}</p>
+                    <p className='task-create-date'>{props.createDatetask}</p>
                 </div>
                 <div className='btn-group'>
+                    
                     <Button>
                         <FiCheckSquare/>
                     </Button>
@@ -25,7 +28,7 @@ export const Task = ({task, dateCompletion, createDatetask}) => {
                         <FiXSquare/>
                     </Button>
                 </div>
-            </li>            
-        </ul>
+            </div>            
+        </div>
     )
 }

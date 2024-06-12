@@ -5,7 +5,7 @@ import { FiPlus } from "react-icons/fi";
 import { dateAtual } from "../../variables/constants";
 import './Formtask.css';
 
-export const Formtask = ({ task, dateCompletion, createDatetask }) => {
+export const Formtask = () => {
 
     const [inputTextTask, setInputTextTask] = useState('')
     const [inputDateTask, setInputDateTask] = useState('')
@@ -14,7 +14,7 @@ export const Formtask = ({ task, dateCompletion, createDatetask }) => {
     
     const handleTaskAdd = () => {
         // e.PreventDefault()
-        const { task, dateCompletion, createDatetask } = taskValue
+        // const { task, dateCompletion, createDatetask } = taskValue
         
         
         // const task = {
@@ -23,7 +23,7 @@ export const Formtask = ({ task, dateCompletion, createDatetask }) => {
         //     dateAtual: dateAtual
         // }
 
-        console.log(task)
+        // console.log(task)
         // setinputTaxtTask('')
         
     }
@@ -31,11 +31,12 @@ export const Formtask = ({ task, dateCompletion, createDatetask }) => {
     return (
         <>
             <h3 className='title'>Adicionar tarefas</h3>
-            <form className='task-form'>
+            <section className='task-form'>
                 <div>
 
                     <input 
                     type="text" 
+                    name="input-text-task"
                     placeholder='Digite sua tarefa...' 
                     className='input-text-task' 
                     onChange={(e) => setInputTextTask(e.target.value)}
@@ -60,7 +61,7 @@ export const Formtask = ({ task, dateCompletion, createDatetask }) => {
                 </button>
 
                 
-            </form>
+            </section>
             
         </>
     )
