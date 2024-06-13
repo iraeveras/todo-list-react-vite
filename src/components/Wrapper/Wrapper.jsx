@@ -5,6 +5,7 @@ import './Wrapper.css';
 
 export const Wrapper = () => {
 
+    let message = ""
 
     // const tasks = [
     //     {
@@ -15,20 +16,24 @@ export const Wrapper = () => {
 
     return (
         <div className='main-wrapper'>
-            <section className='task-section'>
+            
                 <Formtask />
+
+                
                 
                 {api.map((item) => {
+                return (
                     
-                return <Task 
-                key={item.id} 
-                task={item.task} 
-                dateCompletion={item.completion_date} 
-                createDatetask={item.create_date} 
-                />
-                })}
+                    <Task 
+                    key={item.id} 
+                    task={item.task} 
+                    dateCompletion={item.completion_date} 
+                    createDatetask={item.create_date} 
+                    />
+                )})}
                 
-            </section>
+            
+            
         </div>
     )
 }

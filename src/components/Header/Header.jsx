@@ -8,6 +8,9 @@ export const Header = () => {
             <nav className='nav'>
                 <ul className='nav-link'>
                     <li className='link'><a href='#'>Tarefas concluídas</a></li>
+                    <li className='link'><a href='#'>Tarefas concluídas</a></li>
+                    <li className='link'><a href='#'>Tarefas concluídas</a></li>
+                    <li className='link'><a href='#'>Tarefas concluídas</a></li>
                 </ul>
 
                 <div className='container-img-profile'>

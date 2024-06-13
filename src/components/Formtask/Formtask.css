@@ -1,16 +1,17 @@
 
 
-.task-section h3 {
+.title {
     width: 100%;
     text-align: center;
     text-transform: uppercase;
+    margin-block: 30px;
 }
 
 .task-form {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    /* padding: 10px; */
+    /* padding-block: 10px; */
     gap: 6px;
     width: 60%;
     margin-bottom: 40px;
@@ -55,7 +56,7 @@
     }
 } */
 
-@media (width <= 1500px) {
+@media (width <= 900px) {
     .task-form {
         display: flex;
         flex-direction: column;
@@ -66,3 +67,4 @@
         flex-direction: column;
     }
 }
+

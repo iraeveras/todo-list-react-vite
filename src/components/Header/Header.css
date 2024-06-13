@@ -31,19 +31,34 @@
 .header .nav .nav-link {
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-end;
     width: 100%;
+    margin-right: 30px;
+    height: 40px;
+    gap: 10px;
 }
 
 .header .nav .nav-link .link {
     display: flex;
     align-items: center;
     justify-content: center;
-
+    text-transform: uppercase;
+    
+    
 }
 
 .header .nav .nav-link .link a {
     text-decoration: none;
+    color: #fff;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    transition: 0.3s all ease-in-out;
+}
+
+.header .nav .nav-link .link a:hover {
+    text-decoration: underline;
+    color: brown;
 }
 
 .container-img-profile {
