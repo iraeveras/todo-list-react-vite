@@ -40,10 +40,21 @@
     gap: 10px;
 }
 
-.btn-group button {
+.btn-concluir,
+.btn-editar,
+.btn-excluir {
     display: flex;
     align-items: center;
     justify-content: center;
+    transition: background .3s ease-in-out;
+}
+
+.btn-editar:hover {
+    background-color: blue;
+}
+
+.btn-excluir:hover {
+    background-color: red;
 }
 
 @media (width <= 1180px) {

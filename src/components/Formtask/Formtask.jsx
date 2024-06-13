@@ -7,22 +7,31 @@ import './Formtask.css';
 
 export const Formtask = () => {
 
-    const [inputTextTask, setInputTextTask] = useState('')
-    const [inputDateTask, setInputDateTask] = useState('')
+    const [inputTextTask, setInputTextTask] = useState('');
+    const [inputDateTask, setInputDateTask] = useState('');
 
     
     
     const handleTaskAdd = () => {
-        // e.PreventDefault()
-        // const { task, dateCompletion, createDatetask } = taskValue
         
-        
-        // const task = {
-        //     taskValue: inputTextTask, 
-        //     dateValue: inputDateTask,
-        //     dateAtual: dateAtual
-        // }
+        if (inputTextTask === "") {
+            alert("informe a tarefa desejada.")
+            return
+        }
 
+        if (inputDateTask === "") {
+            alert("informe a data de conclusão da tarefa.")
+            return
+        }
+        
+        
+        const task = {
+                taskValue: inputTextTask, 
+                dateValue: inputDateTask,
+                dateAtual: dateAtual
+            }
+            
+            console.log(task)
         // console.log(task)
         // setinputTaxtTask('')
         

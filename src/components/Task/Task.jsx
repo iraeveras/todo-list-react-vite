@@ -2,7 +2,7 @@ import React from "react";
 import DataTable , { createTheme } from "react-data-table-component";
 import { FiCheckSquare } from "react-icons/fi";
 import { FiEdit } from "react-icons/fi";
-import { FiXSquare } from "react-icons/fi";
+import { FiTrash } from "react-icons/fi";
 import { Button } from "../Button/Button";
 import api from "../../services/api.js";
 import './Task.css';
@@ -41,9 +41,9 @@ export const Task = () => {
         {
             name: "CONCLUIR",
             cell: () => (
-                <Button >
+                <button className="btn-concluir">
                     <FiCheckSquare />
-                </Button>
+                </button>
             ),
             width: '95px',
             
@@ -51,21 +51,21 @@ export const Task = () => {
         {
             name: "EDITAR",
             cell: () => (
-                <Button >
+                <button className="btn-editar">
                     <FiEdit />
-                </Button>
+                </button>
             ),
-            width: '80px',
+            width: '95px',
             
         },
         {
             name: "EXCLUIR",
             cell: () => (
-                <Button >
-                    <FiXSquare />
-                </Button>
+                <button className="btn-excluir">
+                    <FiTrash />
+                </button>
             ),
-            width: '85px',
+            width: '95px',
             
         },
     ];
