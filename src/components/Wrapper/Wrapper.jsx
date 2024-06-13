@@ -17,23 +17,8 @@ export const Wrapper = () => {
     return (
         <div className='main-wrapper'>
             
-                <Formtask />
-
-                
-                
-                {api.map((item) => {
-                return (
-                    
-                    <Task 
-                    key={item.id} 
-                    task={item.task} 
-                    dateCompletion={item.completion_date} 
-                    createDatetask={item.create_date} 
-                    />
-                )})}
-                
-            
-            
+            <Formtask />
+            <Task />            
         </div>
     )
 }

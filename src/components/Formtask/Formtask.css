@@ -14,7 +14,7 @@
     /* padding-block: 10px; */
     gap: 6px;
     width: 60%;
-    margin-bottom: 40px;
+    margin-block: 40px;
     /* background-color: #FFF; */
 }
 
@@ -29,7 +29,7 @@
 .input-text-task, 
 .input-date-task {
     outline: none;
-    border: 1px solid #a7f3d0;
+    border: 1px solid #2aa198;
     padding: 10px;
     background: transparent;
 }

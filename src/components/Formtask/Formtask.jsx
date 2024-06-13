@@ -30,7 +30,7 @@ export const Formtask = () => {
 
     return (
         <>
-            <h3 className='title'>lista de tarefas</h3>
+            {/* <h3 className='title'></h3> */}
             <section className='task-form'>
                 <div>
 
