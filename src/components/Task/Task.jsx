@@ -1,112 +1,126 @@
 import React from "react";
 import DataTable , { createTheme } from "react-data-table-component";
-import { FiCheckSquare } from "react-icons/fi";
-import { FiEdit } from "react-icons/fi";
-import { FiTrash } from "react-icons/fi";
-import { Button } from "../Button/Button";
+import ButtonDone from "../Button/BottonDone.jsx";
+import ButtonEdit from "../Button/ButtonEdit.jsx";
+import ButtonDelete from "../Button/ButtonDelete.jsx";
+import { COLUMN_WIDTHS, customStyles } from "../../variables/constants.js";
+
+
+
 import api from "../../services/api.js";
 import './Task.css';
 
+// Função para criar o tema
+const createCustomTheme = () => {
+    createTheme('solarized', {
+        text: {
+            primary: '#000000',
+            secondary: '#2aa198',
+        },
+        background: {
+            default: 'transparent',
+        },
+        context: {
+            background: '#2aa198',
+            text: '#FFFFFF',
+        },
+        divider: {
+            default: '#ddd',
+        },
+        header: {
+            fontSize: '18px',
+            fontColor: '#333',
+            fontWeight: '700',
+            backgroundColor: '#f5f5f5',
+            height: '56px',
+            paddingLeft: '16px',
+            paddingRight: '16px',
+        },
+        action: {
+            button: 'rgba(0,0,0,.54)',
+            hover: 'rgba(0,0,0,.08)',
+            disabled: 'rgba(0,0,0,.12)',
+        },
+    }, 'dark');
+};
 
+// Função para mapear dados da API
+const mapDataFromAPI = (apiData) => {
+    return apiData.map(item => ({
+        id: item.id, 
+        task: item.task,
+        date_conpletion: item.completion_date,
+        create_date_task: item.create_date,
+    }));
+};
 
 export const Task = () => {
 
-    const columns = [
+    createCustomTheme()
+
+    // Definição das Colunas
+const columns = [
+    {
+        name: "ID",
+        selector: row => row.id,
+        sortable: true,
+        width: COLUMN_WIDTHS.ID,
+        style: {
+            width: '100%',
+            justifyContent: 'center',
+            textAlign: 'center'
+        },
+    },
+    {
+        name: "TAREFA",
+        selector: row => row.task,
+        sortable: true,
+        width: COLUMN_WIDTHS.TAREFA,
+        style: {
+            justifyContent: 'start'
+        },
+    },
+    {
+        name: "DATA LIMITE",
+        selector: row => row.date_conpletion,
+        sortable: true,
+        style: {
+            justifyContent: 'center'
+        },
+    },
+    {
+        name: "DATA DE CONCLUSÃO",
+        selector: row => row.create_date_task,
+        sortable: true,
+        style: {
+            justifyContent: 'center'
+        },
+    },
+    {
         
-        {
-            name: "ID",
-            selector: row => row.id,
-            sortable: true,
-            width: '70px',
-            text: "center"
+        name: "AÇOES",
+        width: COLUMN_WIDTHS.ACTION,
+        style: {
+            text: 'center',
+            width: '100%'
         },
-        {
-            name: "TAREFA",
-            selector: row => row.task,
-            width: '30%',
-            sortable: true,
-        },
-        {
-            name: "DATA LIMITE",
-            selector: row => row.date_conpletion,
-            width: '125px',
-            sortable: true
-        },
-        {
-            name: "DATA DE CONCLUSÃO",
-            selector: row => row.create_date_task,
-            width: '180px',
-            sortable: true
-        },
-        {
-            name: "CONCLUIR",
-            cell: () => (
-                <button className="btn-concluir">
-                    <FiCheckSquare />
-                </button>
-            ),
-            width: '95px',
-            
-        },
-        {
-            name: "EDITAR",
-            cell: () => (
-                <button className="btn-editar">
-                    <FiEdit />
-                </button>
-            ),
-            width: '95px',
-            
-        },
-        {
-            name: "EXCLUIR",
-            cell: () => (
-                <button className="btn-excluir">
-                    <FiTrash />
-                </button>
-            ),
-            width: '95px',
-            
-        },
-    ];
-
-    createTheme('solarized', {
-            
-            text: {
-                primary: '#000000',
-                secondary: '#2aa198',
-            },
-            background: {
-                default: 'transparent',
-            },
-            context: {
-                background: '#2aa198',
-                text: '#FFFFFF',
-            },
-            divider: {
-                default: '#ddd',
-            },
-            action: {
-                button: 'rgba(0,0,0,.54)',
-                hover: 'rgba(0,0,0,.08)',
-                disabled: 'rgba(0,0,0,.12)',
-            },
-        }, 'dark');
-
-    const data = api.map(item => {
-        return (
-
-            {
-                id: item.id, 
-                task: item.task,
-                date_conpletion: item.completion_date,
-                create_date_task: item.create_date
-            }
-        )
-    })
+        cell: () => (
+            <div className="btn-group">
+            <ButtonDone />
+            <ButtonEdit />
+            <ButtonDelete />
+        </div> 
+        ),
+        
+    },
     
-    return (        
-        
+];
+    
+
+    const data = mapDataFromAPI(api)
+    
+    return (
+        <section>
         <DataTable 
         title="LISTA DE TAREFAS"
         columns={columns} 
@@ -116,7 +130,8 @@ export const Task = () => {
         pagination
         fixedHeader
         theme="solarized"
+        customStyles={customStyles}
         />
-        
+        </section>
     )
 }

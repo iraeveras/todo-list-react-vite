@@ -1,81 +1,18 @@
 .task-section {
     display: flex;
     flex-direction: column;
-    min-width: 60%;
+    min-width: 55%;
     background: transparent;
 }
 
-.task-list {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 10px;
-    width: 650px;
-    
-}
-
-.list {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width: 100%;
-    background: #FFF;
-    padding: 10px;
-    border-radius: 6px;
-}
-
-.task-group {
-    display: grid;
-    align-items: center;
-    grid-template-columns: 2fr 1fr 1fr;
-    width: 100%;
-    font-size: 13px;
-    gap: 10px;
+section {
+    width: 70%;
 }
 
 .btn-group {
+    width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 10px;
-}
-
-.btn-concluir,
-.btn-editar,
-.btn-excluir {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: background .3s ease-in-out;
-}
-
-.btn-editar:hover {
-    background-color: blue;
-}
-
-.btn-excluir:hover {
-    background-color: red;
-}
-
-@media (width <= 1180px) {
-    .task-list {
-        width: 100%;
-    }
-}
-
-@media (width <= 900px) {
-    .list {
-        display: flex;
-        flex-direction: column;
-    }
-
-    .btn-group {
-        display: grid;
-        grid-template-columns: 1fr 1fr 1fr;
-        width: 100%;
-    }
-
-    .btn-group button {
-        width: 100%;
-    }
 }

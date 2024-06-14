@@ -1,7 +1,6 @@
 'use client'
 import { useState } from "react";
-import { Button } from "../Button/Button";
-import { FiPlus } from "react-icons/fi";
+import  ButtonAdd  from "../Button/ButtonAdd";
 import { dateAtual } from "../../variables/constants";
 import './Formtask.css';
 
@@ -10,8 +9,6 @@ export const Formtask = () => {
     const [inputTextTask, setInputTextTask] = useState('');
     const [inputDateTask, setInputDateTask] = useState('');
 
-    
-    
     const handleTaskAdd = () => {
         
         if (inputTextTask === "") {
@@ -32,7 +29,6 @@ export const Formtask = () => {
             }
             
             console.log(task)
-        // console.log(task)
         // setinputTaxtTask('')
         
     }
@@ -61,14 +57,7 @@ export const Formtask = () => {
                     />
                 </div>
 
-                <button
-                type="button"
-                className='btn-add-task'
-                onClick={handleTaskAdd}
-                >
-                    <FiPlus />
-                </button>
-
+                <ButtonAdd onClick={handleTaskAdd} />
                 
             </section>
             
