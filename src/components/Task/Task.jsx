@@ -1,14 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import DataTable , { createTheme } from "react-data-table-component";
 import ButtonDone from "../Button/BottonDone.jsx";
 import ButtonEdit from "../Button/ButtonEdit.jsx";
 import ButtonDelete from "../Button/ButtonDelete.jsx";
-import { COLUMN_WIDTHS, customStyles } from "../../variables/constants.js";
-
-
+import { COLUMN_WIDTHS, customStyles, paginationComponentOptions } from "../../variables/constants.js";
 
 import api from "../../services/api.js";
 import './Task.css';
+
+
 
 // Função para criar o tema
 const createCustomTheme = () => {
@@ -54,8 +54,8 @@ const mapDataFromAPI = (apiData) => {
     }));
 };
 
-export const Task = () => {
-
+export const Task = () => {    
+    
     createCustomTheme()
 
     // Definição das Colunas
@@ -106,10 +106,10 @@ const columns = [
         },
         cell: () => (
             <div className="btn-group">
-            <ButtonDone />
-            <ButtonEdit />
-            <ButtonDelete />
-        </div> 
+                <ButtonDone />
+                <ButtonEdit />
+                <ButtonDelete />
+            </div> 
         ),
         
     },
@@ -120,18 +120,19 @@ const columns = [
     const data = mapDataFromAPI(api)
     
     return (
-        <section>
-        <DataTable 
-        title="LISTA DE TAREFAS"
-        columns={columns} 
-        data={data} 
-        selectableRows
-        onSelectedRowsChange={data => console.log(data)}
-        pagination
-        fixedHeader
-        theme="solarized"
-        customStyles={customStyles}
-        />
+        <section className="task-section">
+            <DataTable 
+            title="LISTA DE TAREFAS"
+            columns={columns} 
+            data={data} 
+            customStyles={customStyles}
+            selectableRows
+            pagination
+            paginationComponentOptions={paginationComponentOptions}
+            onSelectedRowsChange={data => console.log(data)}
+            fixedHeader
+            theme="solarized"
+            />
         </section>
     )
 }

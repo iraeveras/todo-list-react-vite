@@ -2,14 +2,16 @@
 import { useState } from "react";
 import  ButtonAdd  from "../Button/ButtonAdd";
 import { dateAtual } from "../../variables/constants";
+import api from "../../services/api";
 import './Formtask.css';
 
 export const Formtask = () => {
 
     const [inputTextTask, setInputTextTask] = useState('');
     const [inputDateTask, setInputDateTask] = useState('');
+    const [task, setTask] = useState({})
 
-    const handleTaskAdd = () => {
+    const handleTaskAdd = async () => {
         
         if (inputTextTask === "") {
             alert("informe a tarefa desejada.")
@@ -19,16 +21,22 @@ export const Formtask = () => {
         if (inputDateTask === "") {
             alert("informe a data de conclusão da tarefa.")
             return
+        }        
+        
+        const taskData = {
+            taskValue: inputTextTask, 
+            dateValue: inputDateTask,
+            dateAtual: dateAtual
         }
-        
-        
-        const task = {
-                taskValue: inputTextTask, 
-                dateValue: inputDateTask,
-                dateAtual: dateAtual
-            }
+        try {
+            const response = await api.post(`${taskData}/task`)
+            setTask(response)
+        } catch {
+            console.log("Cadastro de tarefa não realizada.");
+        }
+
             
-            console.log(task)
+        
         // setinputTaxtTask('')
         
     }

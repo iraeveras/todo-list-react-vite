@@ -1,12 +1,6 @@
 .task-section {
-    display: flex;
-    flex-direction: column;
-    min-width: 55%;
-    background: transparent;
-}
-
-section {
     width: 70%;
+    position: relative;
 }
 
 .btn-group {

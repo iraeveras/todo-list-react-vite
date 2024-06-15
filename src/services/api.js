@@ -1,5 +1,5 @@
 import db from "../json/db.json";
 
-const api = db;
+const api = db
 
 export default api;

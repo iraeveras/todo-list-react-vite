@@ -17,6 +17,14 @@ const COLUMN_WIDTHS = {
     ACTION: '180px',
 };
 
+const paginationComponentOptions = {
+    rowsPerPageText: 'Linhas por página:',
+    rangeSeparatorText: 'de',
+    noRowsPerPage: false, // Hides the 'rows per page' dropdown
+    selectAllRowsItem: true,
+    selectAllRowsItemText: 'Todos'
+};
+
 const customStyles = {
     headCells: {
         style: {
@@ -37,18 +45,18 @@ const customStyles = {
             height: '40px',
             width: '40px',
             padding: '8px',
-            margin: '0 2px',
+            margin: '10px 2px',
             cursor: 'pointer',
             transition: '0.4s',
             color: '#FFF',
             fill: '#FFF',
             backgroundColor: '#2aa198',
             '&:hover:not(:disabled)': {
-                backgroundColor: '#4a8',
+                backgroundColor: '#2aa19880',
             },
             '&:focus': {
                 outline: 'none',
-                backgroundColor: '#4a8',
+                backgroundColor: '#2aa19880',
             },
             '&:disabled': {
                 cursor: 'unset',
@@ -56,11 +64,21 @@ const customStyles = {
                 fill: '#ffffff40',
             },
         },
-        paginationTextStyle: {
+        paginationText: {
                 color: '#000'
+        },
+    },
+    header: {
+        style: {
+            backgroundColor: 'transparent',
+            color: '#000',
+            fontSize: '24px',
+            fontWeight: '900',
+            textAlign: 'center',
+            paddingBlock: '10px',
         },
     },
 };
 
-export {dateAtual, COLUMN_WIDTHS, customStyles}
+export {dateAtual, COLUMN_WIDTHS, customStyles, paginationComponentOptions}
 
