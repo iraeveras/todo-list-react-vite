@@ -99,10 +99,7 @@
     z-index: 999;
 }
 
-.dropdown.left {
-    left: 0;
-    transition: all 0.2s ease-in;
-}
+
 
 .dropdown .link {
     margin-bottom: 10px;
@@ -141,5 +138,10 @@
 
     .btn-toggle {
         display: flex;
+    }
+
+    .dropdown.show {
+        left: 0;
+        transition: all 0.2s ease-in;
     }
 }

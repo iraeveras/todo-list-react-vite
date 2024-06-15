@@ -1,10 +1,13 @@
-
+import { useState } from 'react';
 import './Header.css';
 
+
 export const Header = () => {
+    const [menuOpen, setMenuOpen] = useState(false);
+
 
     function handleBtnToggle() {
-        alert("Abrir menu lateral")
+        setMenuOpen(!menuOpen)
         
     }
 
@@ -25,7 +28,7 @@ export const Header = () => {
                     <span></span>
                 </button>
             </nav>
-            <ul className=' dropdown'>
+            <ul className={`dropdown ${menuOpen ? 'show' : !menuOpen}`}>
                 <li className='link'><a href='#'>Tarefas concluídas</a></li>
                 <li className='link'><a href='#'>Tarefas concluídas</a></li>
                 <li className='link'><a href='#'>Tarefas concluídas</a></li>
