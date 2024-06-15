@@ -3,7 +3,7 @@
     align-items: center;
     justify-content: center;
     background-color: #2aa198;
-    padding: 10px 50px;
+    padding: 10px 15px;
     height: 60px;
     box-shadow: 3px 5px 6px rgba(0,0,0,0.3);
 }
@@ -91,34 +91,51 @@
     position: fixed;
     top: 60px;
     left: -300px;
-    width: 300px;
+    width: 70px;
     height: calc(100% - 50px);
-    background-color: #FFF;
+    background: transparent;
     list-style: none;
     padding: 10px 10px 10px;
+    cursor: pointer;
     z-index: 999;
 }
 
-
-
 .dropdown .link {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
     margin-bottom: 10px;
     width: 100%;
     background-color: #2aa198;
     padding: 10px;
+    transition: all .3s ease-in-out;
 }
 
-.dropdown .link a {
+.dropdown .link svg {
+    font-size: 20px;
+    color: #FFF;
+}
+
+.dropdown .link span a {
     text-decoration: none;
     color: #FFF;
-    
+    font-size: 11px;
+    text-transform: uppercase;
+}
+
+.dropdown .link span {
+    display: block;
+    position: absolute;
+    width: 180px;
+    left: -122px;
 }
 
 @media (width <= 900px) {
     .header {
         display: flex;
         flex-direction: row-reverse;
-        transition: .3s ease-in;
     }
 
     .header .nav {
@@ -132,6 +149,7 @@
         justify-content: center;
         width: calc(100% - 40px);
     }
+
     .header .nav .nav-link {
         display: none;
     }
@@ -143,5 +161,33 @@
     .dropdown.show {
         left: 0;
         transition: all 0.2s ease-in;
+    }
+
+    .dropdown.show .link:hover {
+        display: flex;
+        justify-content: space-between;
+        position: relative;
+        width: 170px;
+
+        justify-content: space-evenly;
+    }
+
+    .dropdown.show .link:hover span {
+        display: flex;
+        position: absolute;
+        
+    }
+
+    .dropdown.show .link:hover {
+        display: flex;
+        justify-content: start;
+        width: 180px;
+
+        
+    }
+
+    .dropdown.show .link:hover span {
+        display: flex;
+        left: 40px;
     }
 }

@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { FiList } from "react-icons/fi";
 import './Header.css';
 
 
@@ -29,10 +30,10 @@ export const Header = () => {
                 </button>
             </nav>
             <ul className={`dropdown ${menuOpen ? 'show' : !menuOpen}`}>
-                <li className='link'><a href='#'>Tarefas concluídas</a></li>
-                <li className='link'><a href='#'>Tarefas concluídas</a></li>
-                <li className='link'><a href='#'>Tarefas concluídas</a></li>
-                <li className='link'><a href='#'>Tarefas concluídas</a></li>
+                <li className='link'><FiList/><span><a href='#'>Tarefas concluídas</a></span></li>
+                <li className='link'><FiList/><span><a href='#'>Tarefas concluídas</a></span></li>
+                <li className='link'><FiList/><span><a href='#'>Tarefas concluídas</a></span></li>
+                <li className='link'><FiList/><span><a href='#'>Tarefas concluídas</a></span></li>
             </ul>
         </header>
     )
