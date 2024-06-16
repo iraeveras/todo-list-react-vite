@@ -11,6 +11,11 @@
     color: #FFF;
     font-weight: bold;
     cursor: pointer;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.btn-add:hover {
+    opacity: 0.8;
 }
 
 .btn-done, 

@@ -3,6 +3,8 @@ import DataTable , { createTheme } from "react-data-table-component";
 import ButtonDone from "../Button/BottonDone.jsx";
 import ButtonEdit from "../Button/ButtonEdit.jsx";
 import ButtonDelete from "../Button/ButtonDelete.jsx";
+import InputSearch from "../Input/InputSearch.jsx";
+
 import { COLUMN_WIDTHS, customStyles, paginationComponentOptions } from "../../variables/constants.js";
 
 import api from "../../services/api.js";
@@ -121,6 +123,9 @@ const columns = [
     
     return (
         <section className="task-section">
+            
+            <InputSearch />
+            
             <DataTable 
             title="LISTA DE TAREFAS"
             columns={columns} 
