@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import DataTable , { createTheme } from "react-data-table-component";
 import ButtonDone from "../Button/BottonDone.jsx";
 import ButtonEdit from "../Button/ButtonEdit.jsx";
@@ -7,7 +7,7 @@ import InputSearch from "../Input/InputSearch.jsx";
 
 import { COLUMN_WIDTHS, customStyles, paginationComponentOptions } from "../../variables/constants.js";
 
-import api from "../../services/api.js";
+import server from "../../services/server.js";
 import './Task.css';
 
 
@@ -56,7 +56,39 @@ const mapDataFromAPI = (apiData) => {
     }));
 };
 
-export const Task = () => {    
+export const Task = () => {
+
+    const [tasks, setTasks] = useState([])
+    const [filteredTasks, setFilteredtasks] = useState([])
+    const [loading, setLoading] = useState(true)
+
+    useEffect(() => {
+        const fetchTasks = async () => {
+            try {
+                const response = await server.get('/tasks')
+                const mappedData = mapDataFromAPI(response.data)
+
+                setTasks(mappedData)
+                setLoading(false)
+            }catch (err) {
+                console.error("Erro ao buscar as tarefas:", err);
+                setLoading(false)
+            }
+        };
+
+        fetchTasks()
+    }, [])
+
+    const hendleSearch = (searchTerm) => {
+        if (searchTerm === "") {
+            setFilteredtasks(tasks)
+        } else {
+            const filtered = tasks.filter(task => 
+                task.task.toLowerCase().includes(searchTerm.toLowerCase())
+            );
+            setFilteredtasks(filtered)
+        }
+    }
     
     createCustomTheme()
 
@@ -119,24 +151,25 @@ const columns = [
 ];
     
 
-    const data = mapDataFromAPI(api)
+    // const data = mapDataFromAPI(server)
     
     return (
         <section className="task-section">
             
-            <InputSearch />
+            <InputSearch onSearch={hendleSearch} />
             
             <DataTable 
             title="LISTA DE TAREFAS"
             columns={columns} 
-            data={data} 
+            data={filteredTasks} 
             customStyles={customStyles}
             selectableRows
             pagination
             paginationComponentOptions={paginationComponentOptions}
-            onSelectedRowsChange={data => console.log(data)}
+            onSelectedRowsChange={tasks => console.log(tasks)}
             fixedHeader
             theme="solarized"
+            progressPending={loading}
             />
         </section>
     )

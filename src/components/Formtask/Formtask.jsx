@@ -1,16 +1,22 @@
 
 import { useState } from "react";
 import  ButtonAdd  from "../Button/ButtonAdd";
+import { FiPlus } from "react-icons/fi";
 import { dateAtual } from "../../variables/constants";
-import api from "../../services/api";
+import server from "../../services/server";
 import './Formtask.css';
 
 export const Formtask = () => {
 
+    
+
     const [inputTextTask, setInputTextTask] = useState('');
     const [inputDateTask, setInputDateTask] = useState('');
+    const [tasks, setTasks] = useState([])
 
-    const handleTaskAdd = () => {
+    async function handleTaskAdd () {
+        
+        // alert("enviando tarefa")
         
         if (inputTextTask === "") {
             alert("informe a tarefa desejada.")
@@ -23,10 +29,25 @@ export const Formtask = () => {
         }        
         
         const taskData = {
-            taskValue: inputTextTask, 
-            dateValue: inputDateTask,
-            dateAtual: dateAtual
-        }        
+            task: inputTextTask, 
+            completion_date: inputDateTask,
+            create_date: dateAtual
+        }
+
+        console.log(taskData);
+
+        try {
+            const response = await server.post('/tasks', taskData)
+            console.log(response.data);
+            setTasks([...tasks, response.data])
+
+            setInputTextTask('');
+            setInputDateTask('');
+        } catch (err) {
+            console.error("Erro ao adicionar uma tarefa:", err);
+        }
+
+        
     }
 
     return (
@@ -51,7 +72,9 @@ export const Formtask = () => {
                     onChange={(e) => setInputDateTask(e.target.value)}
                     value={inputDateTask}
                     />
-                    <ButtonAdd onClick={handleTaskAdd} />
+                    <button type='button' className='btn-add' onClick={handleTaskAdd}>
+                        <FiPlus />
+                    </button>
                 </div>
             </section>
         </>
