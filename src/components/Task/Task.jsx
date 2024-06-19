@@ -40,7 +40,7 @@ const createCustomTheme = () => {
         },
         action: {
             button: 'rgba(0,0,0,.54)',
-            hover: 'rgba(0,0,0,.08)',
+            hover: 'rgba(0,0,0,.05)',
             disabled: 'rgba(0,0,0,.12)',
         },
     }, 'dark');
@@ -80,7 +80,10 @@ export const Task = () => {
     }, [])
 
     const hendleSearch = (searchTerm) => {
-        if (searchTerm === "") {
+
+        
+
+        if (!searchTerm) {
             setFilteredtasks(tasks)
         } else {
             const filtered = tasks.filter(task => 
@@ -156,20 +159,23 @@ const columns = [
     return (
         <section className="task-section">
             
-            <InputSearch onSearch={hendleSearch} />
-            
             <DataTable 
-            title="LISTA DE TAREFAS"
+            title="TAREFAS"
             columns={columns} 
             data={filteredTasks} 
             customStyles={customStyles}
-            selectableRows
             pagination
             paginationComponentOptions={paginationComponentOptions}
             onSelectedRowsChange={tasks => console.log(tasks)}
             fixedHeader
+            fixedHeaderScrollHeight="550px"
             theme="solarized"
             progressPending={loading}
+            subHeader
+            subHeaderComponent={
+                <InputSearch onSearch={hendleSearch} />
+            }
+            subHeaderAlign="right"
             />
         </section>
     )

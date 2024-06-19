@@ -71,14 +71,21 @@ const customStyles = {
     header: {
         style: {
             backgroundColor: 'transparent',
-            color: '#000',
-            fontSize: '24px',
-            fontWeight: '900',
-            textAlign: 'center',
-            paddingBlock: '10px',
+            
         },
+        
     },
+    subHeader: {
+        style: {padding: "10px"
+            
+        }
+    }
 };
 
 export {dateAtual, COLUMN_WIDTHS, customStyles, paginationComponentOptions}
 
+// color: '#000',
+//             fontSize: '24px',
+//             fontWeight: '900',
+//             textAlign: 'center',
+//             paddingBlock: '10px',
